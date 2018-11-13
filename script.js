@@ -1,5 +1,6 @@
 const input = require('./input.json');
 const { arrowX0, arrowY0, targets, players } = input;
+const puntajes = [];
 
 // el punto = (x0, y0) y la recta: ax + by + c = 0
 const distanciaDePuntoARecta = (x0, y0, a, b, c) => {
@@ -7,11 +8,11 @@ const distanciaDePuntoARecta = (x0, y0, a, b, c) => {
     // pero cuando escribo la ecuacion en forma gral, queda -ax + by - c = 0
     const numerador = Math.abs((-a*x0)+(b*y0)-c);
     const denominador = Math.sqrt(Math.pow(a,2)+Math.pow(b,2));
+    if (denominador === 0) {
+        throw new Error('No se puede dividir por cero');
+    }
     return numerador/denominador;
 };
-
-const puntajes = [];
-
 
 players.forEach(player => {
     const { shots, id }  = player;
