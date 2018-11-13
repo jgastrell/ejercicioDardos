@@ -25,7 +25,7 @@ players.forEach(player => {
         targets.forEach(target => {
             const { x, y, diameter, prizePoints } = target;
             const distancia = distanciaDePuntoARecta(x , y, pendienteDeRecta, 1, c);
-            if (distancia < diameter) {
+            if (distancia < diameter/2) {
                 puntajes[id] += prizePoints;
             };
         });
